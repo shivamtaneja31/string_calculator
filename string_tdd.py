@@ -83,3 +83,15 @@ class TestStringCalculator(unittest.TestCase):
     def test_custom_delimiter(self):
         """Test that a custom delimiter (;) is handled correctly."""
         self.assertEqual(add("//;\n1;2"), 3)
+    
+    def test_negative_numbers_exception(self):
+        """Test that negative numbers raise a ValueError with the correct message."""
+        with self.assertRaises(ValueError) as cm:
+            add("1,-2,3,-4")
+        self.assertEqual(str(cm.exception), "negative numbers not allowed -2,-4")
+
+    def test_multiple_negative_numbers(self):
+        """Test that multiple negative numbers raise a ValueError with all negatives listed."""
+        with self.assertRaises(ValueError) as cm:
+            add("1,-2,-3,4,-5")
+        self.assertEqual(str(cm.exception), "negative numbers not allowed -2,-3,-5")
