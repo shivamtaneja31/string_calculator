@@ -54,3 +54,12 @@ def add(numbers: str) -> int:
         raise ValueError(f"negative numbers not allowed {','.join(map(str, negatives))}")
 
     return sum(num_list)
+
+class TestStringCalculator(unittest.TestCase):
+    """
+    Test cases for the `add` function in the String Calculator.
+    """
+
+    def test_empty_string(self):
+        """Test that an empty string returns 0."""
+        self.assertEqual(add(""), 0)
