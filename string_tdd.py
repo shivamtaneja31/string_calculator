@@ -95,3 +95,19 @@ class TestStringCalculator(unittest.TestCase):
         with self.assertRaises(ValueError) as cm:
             add("1,-2,-3,4,-5")
         self.assertEqual(str(cm.exception), "negative numbers not allowed -2,-3,-5")
+
+    def test_custom_delimiter_with_newline(self):
+        """Test that a custom delimiter (|) with newlines is handled correctly."""
+        self.assertEqual(add("//|\n1|2|3"), 6)
+
+    def test_custom_delimiter_with_multiple_chars(self):
+        """Test that a multi-character custom delimiter ([***]) is handled correctly."""
+        self.assertEqual(add("//[***]\n1***2***3"), 6)
+
+    def test_custom_delimiter_with_special_chars(self):
+        """Test that a custom delimiter with special characters ([#@]) is handled correctly."""
+        self.assertEqual(add("//[#@]\n1#@2#@3"), 6)
+
+
+if __name__ == "__main__":
+    unittest.main(exit=False)
