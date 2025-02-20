@@ -63,3 +63,7 @@ class TestStringCalculator(unittest.TestCase):
     def test_empty_string(self):
         """Test that an empty string returns 0."""
         self.assertEqual(add(""), 0)
+
+    def test_single_number(self):
+        """Test that a single number returns the number itself."""
+        self.assertEqual(add("1"), 1)
