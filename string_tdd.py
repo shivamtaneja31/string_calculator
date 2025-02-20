@@ -67,3 +67,11 @@ class TestStringCalculator(unittest.TestCase):
     def test_single_number(self):
         """Test that a single number returns the number itself."""
         self.assertEqual(add("1"), 1)
+
+    def test_two_numbers(self):
+        """Test that two numbers separated by a comma are summed correctly."""
+        self.assertEqual(add("1,5"), 6)
+    
+    def test_multiple_numbers(self):
+        """Test that multiple numbers separated by commas are summed correctly."""
+        self.assertEqual(add("1,2,3,4"), 10)
